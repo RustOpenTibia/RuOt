@@ -1,4 +1,4 @@
-vname: OSV-Scanner Scheduled Scan
+name: OSV-Scanner Scheduled Scan
 
 on:
   schedule:
