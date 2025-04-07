@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    'crates/*',
+ ]
+ resolver = "3"
+
+[workspace.package]
+version = "0.0.1"
+authors = ["Hyakko (Alex)"]
+description = "Open Tibia Server ecosystem re-write in rust."
+edition = "2024"
+publish = false
