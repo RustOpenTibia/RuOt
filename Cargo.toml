@@ -1,6 +1,7 @@
 [workspace]
 members = [
-    'crates/*',
+    "crates/*",
+    #"wasm_scripts/*"
  ]
  resolver = "3"
 
@@ -10,3 +11,8 @@ authors = ["Hyakko (Alex)"]
 description = "Open Tibia Server ecosystem re-write in rust."
 edition = "2024"
 publish = false
+
+[profile.perf]
+inherits = "release"
+debug = true
+# Opcional: strip = "debuginfo" ou "none" se necessário, mas debug=true geralmente é suficiente.

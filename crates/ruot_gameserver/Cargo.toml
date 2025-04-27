@@ -1,0 +1,53 @@
+[package]
+name = "ruot_gameserver"
+description = "Contains Game Server code"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[lints.clippy]
+too_many_arguments = "allow"
+type_complexity = "allow"
+
+[dependencies]
+bevy = { version = "^0.16", default-features = false, features = [
+    #"libm",                  # Uses the `libm` maths library instead of the one provided in `std` and `core`.(wasm32-unknown-unknown target?)
+    "std",                    # Allows access to the `std` crate.
+    "async_executor",         # Uses `async-executor` as a task execution backend.
+    "multi_threaded",         # Enables multithreaded parallelism in the engine. Disabling it forces all engine tasks to run on a single thread.
+
+    "asset_processor",        # Enables the built-in asset processor for processed assets.
+    "bevy_asset",             # Provides asset functionality
+    "bevy_color",             # Provides shared color types and operations
+    "bevy_scene",             # Provides scene functionality
+    "bevy_state",             # Enable built in global state machines
+    "bevy_log",               # Enable integration with `tracing` and `log`
+
+    "file_watcher",           # Enables watching the filesystem for Bevy Asset hot-reloading
+    "reflect_functions",      # Enable function reflection
+    "reflect_documentation",  # Enable documentation reflection
+    "trace",                  # Tracing support
+    "bevy/trace_tracy_memory",# Tracing support, with memory profiling, exposing a port for Tracy
+    "bevy/track_location",    # Enables source location tracking for change detection and spawning/despawning, which can assist with debugging
+    "sysinfo_plugin",         # Enables system information diagnostic plugin
+    "serialize",              # Enable serialization support through serde
+] }
+bevy_remote_inspector = "0.1.0"
+
+[features]
+default = []
+devonly = [
+    "bevy/bevy_dev_tools",      # Provides a collection of developer tools
+    "bevy/bevy_debug_stepping", # Enable stepping-based debugging of Bevy systems
+    "bevy/embedded_watcher",    # Enables watching in memory asset providers for Bevy Asset hot-reloading
+
+    "bevy/dynamic_linking",     # Force dynamic linking, which improves iterative compile times
+
+    "bevy/trace_tracy_memory",  # Tracing support, with memory profiling, exposing a port for Tracy
+    "bevy/track_location",      # Enables source location tracking for change detection and spawning/despawning, which can assist with debugging
+    "bevy/trace_chrome",        # Tracing support, saving a file in Chrome Tracing format
+    "bevy/detailed_trace",      # Enable detailed trace event logging. These trace events are expensive even when off, thus they require compile time opt-in
+]
+ci = [
+    "bevy_ci_testing",  # Enable systems that allow for automated testing on CI
+]
