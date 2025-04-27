@@ -1,6 +1,6 @@
-### Estrutura organizada do projeto **RuOt**
+# Estrutura organizada do projeto **RuOt**
 
-```
+``` dirs
 ruot/                           # Raiz do projeto (Workspace Cargo)
 ├── .cargo/                     # Configuração do Cargo (opcional)
 │   └── config.toml
