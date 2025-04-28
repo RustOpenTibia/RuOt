@@ -1,0 +1,8 @@
+[package]
+name = "ruot_share"
+description = "Contains shared code for the project"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]

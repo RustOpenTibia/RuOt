@@ -1,0 +1,32 @@
+global
+        chroot /var/lib/haproxy
+        stats socket /run/haproxy/admin.sock mode 660 level admin
+        stats timeout 30s
+        user haproxy
+        group haproxy
+        daemon
+
+defaults
+        timeout connect 4s
+        timeout client  50s
+        timeout server  50s
+
+listen status-endpoint # status connections
+        bind 0.0.0.0:<STATUS_PORT_EP>
+        mode tcp
+        server status-backend <RUOT_PROXY_ADRESSE>:<STATUS_PORT_BE> send-proxy-v2
+
+listen login-endpoint # login connections
+        bind 0.0.0.0:<LOGIN_PORT_EP>
+        mode tcp
+        server login-backend <RUOT_PROXY_ADRESSE>:<LOGIN_PORT_BE> send-proxy-v2
+
+listen gameserver-endpoint # game connections
+        bind 0.0.0.0:<GAME_PORT_EP>
+        mode tcp
+        server gameserver-backend <RUOT_PROXY_ADRESSE>:<GAME_PORT_BE> send-proxy-v2
+
+listen chat-endpoint # chat connections
+        bind 0.0.0.0:<CHAT_PORT_EP>
+        mode tcp
+        server chat-backend <RUOT_PROXY_ADRESSE>:<CHAT_PORT_BE> send-proxy-v2

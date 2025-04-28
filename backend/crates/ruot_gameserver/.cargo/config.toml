@@ -1,0 +1,4 @@
+[alias]     # command aliases
+dev-run = "run --features devonly"
+dev-build = "build --features devonly"
+dev-test = "test --features devonly"

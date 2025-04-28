@@ -1,0 +1,11 @@
+[alias]     # command aliases
+perf-run = "run --profile perf"
+perf-build = "build --profile perf"
+perf-test = "test --profile perf"
+
+[build]
+target-dir = "../target"          # path of where to place all generated artifacts
+target = ["wasm32-wasip2"]
+
+[env]
+ASSETS_DIR = { value = "../../assets", relative = true }
